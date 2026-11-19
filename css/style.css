@@ -1514,3 +1514,62 @@ button:focus-visible {
     }
 
 }
+/* =========================================================
+   CORREÇÃO DEFINITIVA DO LOGO
+   ========================================================= */
+
+.site-header .brand img.brand-logo {
+    display: block !important;
+
+    width: 165px !important;
+    max-width: 165px !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    object-fit: contain !important;
+}
+
+.site-header .brand {
+    display: inline-flex !important;
+    width: auto !important;
+    max-width: 180px !important;
+    align-items: center !important;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+    .site-header .brand img.brand-logo {
+        width: 150px !important;
+        max-width: 150px !important;
+    }
+
+}
+
+
+/* Smartphone */
+
+@media (max-width: 640px) {
+
+    .site-header .brand img.brand-logo {
+        width: 135px !important;
+        max-width: 135px !important;
+    }
+
+}
+
+
+/* Smartphones pequenos */
+
+@media (max-width: 390px) {
+
+    .site-header .brand img.brand-logo {
+        width: 120px !important;
+        max-width: 120px !important;
+    }
+
+}
