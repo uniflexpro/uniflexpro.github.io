@@ -1,31 +1,30 @@
 /* =========================================================
    UNIFLEX PRO
-   Portal corporativo principal
-   Ficheiro: css/style.css
+   Portal principal - uniflexpro.com
    ========================================================= */
 
 
-/* =========================================================
+/* =========================
    1. VARIÁVEIS
-   ========================================================= */
+   ========================= */
 
 :root {
-    --color-primary: #021b4e;
-    --color-primary-dark: #011231;
-    --color-primary-soft: #062b67;
+    --primary: #021b4e;
+    --primary-dark: #011231;
+    --primary-soft: #062b67;
 
-    --color-secondary: #004fa8;
-    --color-accent: #009cff;
-    --color-accent-light: #46c2ff;
+    --secondary: #004fa8;
+    --accent: #009cff;
+    --accent-light: #46c2ff;
 
-    --color-white: #ffffff;
-    --color-background: #f5f8fc;
-    --color-background-blue: #edf6fd;
+    --white: #ffffff;
+    --background: #f5f8fc;
+    --background-soft: #edf6fd;
 
-    --color-heading: #0b1930;
-    --color-text: #4b5563;
-    --color-text-light: #6b7280;
-    --color-border: #dce6f2;
+    --heading: #0b1930;
+    --text: #4b5563;
+    --text-light: #6b7280;
+    --border: #dce6f2;
 
     --gradient-brand:
         linear-gradient(
@@ -42,48 +41,37 @@
             #009cff 100%
         );
 
-    --gradient-overlay:
-        linear-gradient(
-            90deg,
-            rgba(1, 18, 49, 0.96) 0%,
-            rgba(2, 27, 78, 0.82) 45%,
-            rgba(2, 27, 78, 0.30) 76%,
-            rgba(2, 27, 78, 0.10) 100%
-        );
+    --shadow-sm:
+        0 10px 30px rgba(2,27,78,.08);
 
-    --shadow-small:
-        0 10px 30px rgba(2, 27, 78, 0.08);
+    --shadow-md:
+        0 20px 50px rgba(2,27,78,.12);
 
-    --shadow-medium:
-        0 20px 50px rgba(2, 27, 78, 0.12);
+    --shadow-lg:
+        0 30px 80px rgba(2,27,78,.18);
 
-    --shadow-large:
-        0 30px 80px rgba(2, 27, 78, 0.18);
-
-    --radius-small: 10px;
-    --radius-medium: 18px;
-    --radius-large: 28px;
+    --radius-sm: 10px;
+    --radius-md: 18px;
+    --radius-lg: 28px;
     --radius-pill: 999px;
 
-    --container-width: 1240px;
-    --header-height: 88px;
+    --container: 1240px;
+    --header-height: 82px;
 
-    --transition-fast: 180ms ease;
-    --transition-normal: 320ms ease;
-    --transition-slow: 600ms cubic-bezier(0.22, 1, 0.36, 1);
+    --transition: .3s ease;
 }
 
 
-/* =========================================================
+/* =========================
    2. RESET
-   ========================================================= */
+   ========================= */
 
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -95,11 +83,7 @@ body {
     min-width: 320px;
     overflow-x: hidden;
 
-    color: var(--color-text);
-    background-color: var(--color-white);
-
     font-family:
-        Inter,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
@@ -108,27 +92,18 @@ body {
         Arial,
         sans-serif;
 
+    color: var(--text);
+    background: var(--white);
+
     font-size: 16px;
     line-height: 1.7;
 
-    text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
 
-body.menu-open {
-    overflow: hidden;
-}
-
-img,
-picture,
-svg,
-video {
+img {
     display: block;
     max-width: 100%;
-}
-
-img {
-    height: auto;
 }
 
 a {
@@ -136,31 +111,19 @@ a {
     text-decoration: none;
 }
 
-button,
-input,
-select,
-textarea {
+button {
     font: inherit;
 }
 
-button {
-    cursor: pointer;
-}
-
-ul,
-ol {
-    list-style: none;
-}
-
 ::selection {
-    color: var(--color-white);
-    background: var(--color-secondary);
+    color: var(--white);
+    background: var(--secondary);
 }
 
 
-/* =========================================================
+/* =========================
    3. ACESSIBILIDADE
-   ========================================================= */
+   ========================= */
 
 .skip-link {
     position: fixed;
@@ -170,13 +133,10 @@ ol {
 
     padding: 12px 20px;
 
-    color: var(--color-white);
-    background: var(--color-primary);
+    color: var(--white);
+    background: var(--primary);
 
-    border-radius: 0 0 var(--radius-small) var(--radius-small);
-    font-weight: 700;
-
-    transition: top var(--transition-fast);
+    border-radius: 0 0 10px 10px;
 }
 
 .skip-link:focus {
@@ -185,21 +145,17 @@ ol {
 
 a:focus-visible,
 button:focus-visible {
-    outline: 3px solid var(--color-accent);
+    outline: 3px solid var(--accent);
     outline-offset: 4px;
 }
 
 
-/* =========================================================
+/* =========================
    4. ELEMENTOS GERAIS
-   ========================================================= */
+   ========================= */
 
 .container {
-    width: min(
-        calc(100% - 48px),
-        var(--container-width)
-    );
-
+    width: min(calc(100% - 48px), var(--container));
     margin-inline: auto;
 }
 
@@ -213,21 +169,1348 @@ button:focus-visible {
     align-items: center;
     gap: 12px;
 
-    color: var(--color-secondary);
+    color: var(--secondary);
 
-    font-size: 0.76rem;
+    font-size: .75rem;
     font-weight: 800;
-    line-height: 1.2;
-    letter-spacing: 0.24em;
+    letter-spacing: .22em;
     text-transform: uppercase;
 }
 
 .section-label::before,
 .eyebrow::before {
+    content: "";
+
     width: 34px;
     height: 3px;
 
+    background: var(--accent);
+    border-radius: 999px;
+}
+
+.section-label-light {
+    color: var(--accent-light);
+}
+
+
+/* =========================
+   5. HEADER
+   ========================= */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+
+    height: var(--header-height);
+
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid rgba(2,27,78,.08);
+
+    box-shadow:
+        0 4px 20px rgba(2,27,78,.05);
+
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+}
+
+.header-container {
+    width: min(calc(100% - 48px), var(--container));
+    height: 100%;
+
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* LOGO - TAMANHO CONTROLADO */
+
+.brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.brand-logo {
+    display: block;
+
+    width: 180px;
+    max-width: 180px;
+    height: auto;
+
+    object-fit: contain;
+}
+
+
+/* CONTACT BUTTON */
+
+.header-contact {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 44px;
+    padding: 10px 22px;
+
+    color: var(--white);
+    background: var(--gradient-button);
+
+    border-radius: var(--radius-pill);
+
+    font-size: .88rem;
+    font-weight: 700;
+
+    box-shadow:
+        0 10px 25px rgba(0,156,255,.18);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.header-contact:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 32px rgba(0,156,255,.28);
+}
+
+
+/* menu reservado */
+
+.menu-toggle {
+    display: none;
+}
+
+
+/* =========================
+   6. HERO
+   ========================= */
+
+.hero {
+    position: relative;
+
+    min-height: calc(100vh - var(--header-height));
+    min-height: calc(100svh - var(--header-height));
+
+    margin-top: var(--header-height);
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    color: var(--white);
+    background: var(--primary-dark);
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(1,18,49,.96) 0%,
+            rgba(2,27,78,.85) 40%,
+            rgba(2,27,78,.40) 72%,
+            rgba(2,27,78,.15) 100%
+        );
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
+
+    width: min(calc(100% - 48px), var(--container));
+
+    margin-inline: auto;
+
+    padding: 110px 0 150px;
+}
+
+.hero-content {
+    max-width: 790px;
+}
+
+.hero .eyebrow {
+    margin-bottom: 28px;
+
+    color: var(--accent-light);
+}
+
+.hero h1 {
+    margin-bottom: 28px;
+
+    max-width: 900px;
+
+    color: var(--white);
+
+    font-size: clamp(2.7rem, 5.3vw, 5rem);
+    font-weight: 400;
+
+    line-height: 1.04;
+    letter-spacing: -.045em;
+}
+
+.hero h1 strong {
+    display: block;
+
+    color: var(--accent-light);
+    font-weight: 750;
+}
+
+.hero-lead {
+    max-width: 680px;
+
+    margin-bottom: 38px;
+
+    color: rgba(255,255,255,.87);
+
+    font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+}
+
+
+/* =========================
+   7. BOTÕES
+   ========================= */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    min-height: 56px;
+
+    padding: 14px 27px;
+
+    border-radius: var(--radius-pill);
+
+    font-size: .93rem;
+    font-weight: 750;
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.button span {
+    transition: transform var(--transition);
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button:hover span {
+    transform: translateX(4px);
+}
+
+.button-primary {
+    color: var(--white);
+    background: var(--gradient-button);
+
+    box-shadow:
+        0 16px 38px rgba(0,156,255,.28);
+}
+
+.button-light {
+    color: var(--primary);
+    background: var(--white);
+}
+
+
+/* =========================
+   8. SCROLL INDICATOR
+   ========================= */
+
+.scroll-indicator {
+    position: absolute;
+
+    bottom: 30px;
+    left: 50%;
+
+    z-index: 3;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    color: rgba(255,255,255,.7);
+
+    font-size: .65rem;
+    font-weight: 700;
+
+    letter-spacing: .15em;
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   9. INTRO
+   ========================= */
+
+.intro {
+    padding: 120px 0;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(0,156,255,.08),
+            transparent 45%
+        ),
+        var(--white);
+}
+
+.intro .section-label {
+    margin-bottom: 24px;
+}
+
+.intro .section-label::before {
+    display: none;
+}
+
+.intro h2 {
+    max-width: 820px;
+
+    margin: 0 auto 28px;
+
+    color: var(--heading);
+
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    font-weight: 720;
+
+    line-height: 1.16;
+    letter-spacing: -.035em;
+}
+
+.intro p {
+    max-width: 720px;
+
+    margin: 0 auto 14px;
+
+    color: var(--text-light);
+
+    font-size: 1.07rem;
+}
+
+
+/* =========================
+   10. ÁREAS DE NEGÓCIO
+   ========================= */
+
+.business-areas {
+    overflow: hidden;
+}
+
+.business-section {
+    background: var(--white);
+}
+
+.business-section:nth-child(even) {
+    background: var(--background);
+}
+
+.business-grid {
+    display: grid;
+
+    min-height: 700px;
+
+    grid-template-columns:
+        minmax(0, 55%)
+        minmax(0, 45%);
+}
+
+
+/* IMAGEM */
+
+.business-visual {
+    position: relative;
+
+    min-height: 700px;
+
+    overflow: hidden;
+
+    background: var(--primary);
+}
+
+.business-visual img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    transition:
+        transform .9s cubic-bezier(.22,1,.36,1);
+}
+
+.business-section:hover
+.business-visual img {
+    transform: scale(1.025);
+}
+
+
+/* TEXTO */
+
+.business-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding:
+        clamp(55px, 7vw, 105px);
+}
+
+.business-number {
+    margin-bottom: 10px;
+
+    color: var(--accent);
+
+    font-size: .73rem;
+    font-weight: 850;
+
+    letter-spacing: .22em;
+}
+
+.business-label {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+
+    color: var(--secondary);
+
+    font-size: .77rem;
+    font-weight: 850;
+
+    letter-spacing: .22em;
+}
+
+.business-label::before {
     content: "";
 
-    background: var(--color-accent);
-    border-radius
+    width: 32px;
+    height: 3px;
+
+    background: var(--accent);
+
+    border-radius: 999px;
+}
+
+.business-content h2 {
+    max-width: 590px;
+
+    margin-bottom: 26px;
+
+    color: var(--heading);
+
+    font-size:
+        clamp(2rem, 3.5vw, 3.2rem);
+
+    font-weight: 730;
+
+    line-height: 1.12;
+
+    letter-spacing: -.035em;
+}
+
+.business-content > p {
+    max-width: 580px;
+
+    margin-bottom: 18px;
+
+    font-size: 1.05rem;
+
+    line-height: 1.78;
+}
+
+.business-highlight {
+    position: relative;
+
+    margin-top: 10px !important;
+    margin-bottom: 32px !important;
+
+    padding-left: 18px;
+
+    color: var(--secondary);
+
+    font-weight: 720;
+}
+
+.business-highlight::before {
+    position: absolute;
+
+    top: 5px;
+    bottom: 5px;
+    left: 0;
+
+    width: 4px;
+
+    content: "";
+
+    background: var(--accent);
+
+    border-radius: 999px;
+}
+
+
+/* BUSINESS BUTTON */
+
+.business-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    min-height: 55px;
+
+    padding: 14px 25px;
+
+    color: var(--white);
+
+    background: var(--gradient-button);
+
+    border-radius: var(--radius-pill);
+
+    font-size: .92rem;
+    font-weight: 750;
+
+    box-shadow:
+        0 15px 35px rgba(0,119,213,.22);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.business-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 22px 42px rgba(0,119,213,.32);
+}
+
+.business-button span {
+    font-size: 1.2rem;
+}
+
+.business-domain {
+    margin-top: 18px;
+
+    color: var(--text-light);
+
+    font-size: .68rem;
+    font-weight: 700;
+
+    letter-spacing: .16em;
+
+    text-transform: uppercase;
+}
+
+
+/* SECÇÕES ALTERNADAS */
+
+.business-section-reverse
+.business-visual {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.business-section-reverse
+.business-content {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+
+/* =========================
+   11. CTA FINAL
+   ========================= */
+
+.final-cta {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 125px 0;
+
+    text-align: center;
+
+    color: var(--white);
+
+    background: var(--gradient-brand);
+}
+
+.final-cta::after {
+    position: absolute;
+
+    right: -150px;
+    bottom: -200px;
+
+    width: 500px;
+    height: 500px;
+
+    content: "";
+
+    background:
+        rgba(0,156,255,.2);
+
+    border-radius: 50%;
+
+    filter: blur(60px);
+}
+
+.final-cta-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 900px;
+
+    margin: auto;
+}
+
+.final-cta .section-label {
+    margin-bottom: 24px;
+}
+
+.final-cta .section-label::before {
+    display: none;
+}
+
+.final-cta h2 {
+    margin-bottom: 25px;
+
+    color: var(--white);
+
+    font-size:
+        clamp(2.2rem,4.5vw,4rem);
+
+    font-weight: 400;
+
+    line-height: 1.12;
+
+    letter-spacing: -.04em;
+}
+
+.final-cta h2 strong {
+    display: block;
+
+    color: var(--accent-light);
+
+    font-weight: 750;
+}
+
+.final-cta p {
+    max-width: 680px;
+
+    margin: 0 auto 36px;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size: 1.08rem;
+}
+
+
+/* =========================
+   12. CONTACTO
+   ========================= */
+
+.contact {
+    padding: 110px 0;
+
+    background: var(--background);
+}
+
+.contact-header {
+    max-width: 720px;
+
+    margin-bottom: 50px;
+}
+
+.contact-header .section-label {
+    margin-bottom: 20px;
+}
+
+.contact-header h2 {
+    margin-bottom: 18px;
+
+    color: var(--heading);
+
+    font-size:
+        clamp(2.2rem,4vw,3.5rem);
+
+    line-height: 1.15;
+}
+
+.contact-header p {
+    color: var(--text-light);
+
+    font-size: 1.07rem;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
+
+    gap: 24px;
+}
+
+.contact-card {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-height: 175px;
+
+    padding:
+        32px 80px 32px 35px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow: var(--shadow-md);
+}
+
+.contact-card-label {
+    margin-bottom: 10px;
+
+    color: var(--secondary);
+
+    font-size: .68rem;
+    font-weight: 850;
+
+    letter-spacing: .2em;
+}
+
+.contact-card strong {
+    color: var(--heading);
+
+    font-size: 1.15rem;
+}
+
+.contact-arrow {
+    position: absolute;
+
+    top: 50%;
+    right: 28px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    color: var(--white);
+
+    background: var(--gradient-button);
+
+    border-radius: 50%;
+
+    transform: translateY(-50%);
+}
+
+
+/* =========================
+   13. FOOTER
+   ========================= */
+
+.site-footer {
+    padding: 78px 0 28px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    background: var(--primary-dark);
+}
+
+.footer-top {
+    display: grid;
+
+    grid-template-columns:
+        minmax(300px,1.8fr)
+        1fr
+        1fr;
+
+    gap: 65px;
+
+    padding-bottom: 55px;
+
+    border-bottom:
+        1px solid rgba(255,255,255,.1);
+}
+
+
+/* LOGO FOOTER */
+
+.footer-logo {
+    display: block;
+
+    width: 180px;
+    max-width: 180px;
+    height: auto;
+
+    margin-bottom: 24px;
+
+    /*
+      Fundo branco protege a versão
+      azul do logótipo.
+    */
+
+    padding: 8px 12px;
+
+    background: var(--white);
+
+    border-radius: 8px;
+}
+
+.footer-brand p {
+    max-width: 400px;
+}
+
+.footer-business,
+.footer-contact {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 11px;
+}
+
+.footer-heading {
+    margin-bottom: 8px;
+
+    color: var(--white);
+
+    font-size: .72rem;
+    font-weight: 800;
+
+    letter-spacing: .18em;
+
+    text-transform: uppercase;
+}
+
+.footer-business a,
+.footer-contact a {
+    color:
+        rgba(255,255,255,.68);
+
+    font-size: .9rem;
+
+    transition:
+        color var(--transition);
+}
+
+.footer-business a:hover,
+.footer-contact a:hover {
+    color: var(--accent-light);
+}
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+
+    padding-top: 27px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: .77rem;
+}
+
+.footer-legal {
+    display: flex;
+
+    gap: 24px;
+}
+
+
+/* =========================
+   14. TABLET
+   ========================= */
+
+@media (max-width: 900px) {
+
+    :root {
+        --header-height: 76px;
+    }
+
+
+    /* LOGO TABLET */
+
+    .brand-logo {
+        width: 155px;
+        max-width: 155px;
+    }
+
+    .footer-logo {
+        width: 155px;
+        max-width: 155px;
+    }
+
+
+    .container,
+    .header-container,
+    .hero-container {
+        width:
+            min(calc(100% - 36px),var(--container));
+    }
+
+
+    .hero-image {
+        object-position: 62% center;
+    }
+
+
+    .business-grid {
+        display: flex;
+
+        min-height: auto;
+
+        flex-direction: column;
+    }
+
+
+    .business-section-reverse
+    .business-grid {
+        flex-direction: column;
+    }
+
+
+    .business-visual,
+    .business-section-reverse
+    .business-visual {
+
+        width: 100%;
+
+        min-height: 0;
+
+        aspect-ratio: 16 / 10;
+
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+
+    .business-content,
+    .business-section-reverse
+    .business-content {
+
+        width: 100%;
+
+        padding:
+            70px 8% 80px;
+
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .footer-top {
+        grid-template-columns:
+            1.5fr 1fr;
+    }
+
+
+    .footer-contact {
+        grid-column: 1/-1;
+    }
+
+}
+
+
+/* =========================
+   15. MOBILE
+   ========================= */
+
+@media (max-width: 640px) {
+
+    :root {
+        --header-height: 68px;
+    }
+
+
+    .container,
+    .header-container,
+    .hero-container {
+
+        width:
+            min(calc(100% - 28px),var(--container));
+
+    }
+
+
+    /* LOGO MOBILE */
+
+    .brand-logo {
+        width: 140px;
+        max-width: 140px;
+        height: auto;
+    }
+
+
+    .footer-logo {
+        width: 140px;
+        max-width: 140px;
+        height: auto;
+    }
+
+
+    .header-contact {
+
+        min-height: 38px;
+
+        padding:
+            8px 15px;
+
+        font-size: .76rem;
+
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        min-height:
+            calc(100svh - var(--header-height));
+
+    }
+
+
+    .hero-image {
+
+        object-position:
+            66% center;
+
+    }
+
+
+    .hero-overlay {
+
+        background:
+
+            linear-gradient(
+                0deg,
+                rgba(1,18,49,.96) 0%,
+                rgba(2,27,78,.75) 70%,
+                rgba(2,27,78,.45) 100%
+            );
+
+    }
+
+
+    .hero-container {
+
+        min-height:
+            calc(100svh - var(--header-height));
+
+        display: flex;
+
+        align-items: flex-end;
+
+        padding:
+            70px 0 95px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size:
+            clamp(2.2rem,11vw,3.4rem);
+
+    }
+
+
+    .hero-lead {
+
+        font-size: 1rem;
+
+        line-height: 1.6;
+
+    }
+
+
+    .button {
+        width: 100%;
+    }
+
+
+    /* INTRO */
+
+    .intro {
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .intro h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+    /* BUSINESS */
+
+    .business-visual,
+    .business-section-reverse
+    .business-visual {
+
+        aspect-ratio: 4 / 3;
+
+    }
+
+
+    .business-content,
+    .business-section-reverse
+    .business-content {
+
+        padding:
+            52px 23px 65px;
+
+    }
+
+
+    .business-content h2 {
+
+        font-size: 2rem;
+
+    }
+
+
+    .business-content > p {
+
+        font-size: 1rem;
+
+    }
+
+
+    .business-button {
+
+        width: 100%;
+
+    }
+
+
+    .business-domain {
+
+        align-self: center;
+
+        text-align: center;
+
+        letter-spacing: .1em;
+
+    }
+
+
+    /* CTA */
+
+    .final-cta {
+
+        padding:
+            85px 0;
+
+    }
+
+
+    /* CONTACT */
+
+    .contact {
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .contact-card {
+
+        min-height: 150px;
+
+        padding:
+            28px 65px 28px 25px;
+
+    }
+
+
+    /* FOOTER */
+
+    .site-footer {
+
+        padding-top: 60px;
+
+    }
+
+
+    .footer-top {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .footer-contact {
+
+        grid-column: auto;
+
+    }
+
+
+    .footer-bottom {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 15px;
+
+    }
+
+
+    .footer-legal {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+    }
+
+}
+
+
+/* =========================
+   16. MOBILE PEQUENO
+   ========================= */
+
+@media (max-width: 390px) {
+
+    /* LOGO iPHONE PEQUENO */
+
+    .brand-logo {
+        width: 130px;
+        max-width: 130px;
+    }
+
+    .footer-logo {
+        width: 130px;
+        max-width: 130px;
+    }
+
+
+    .header-contact {
+
+        padding:
+            7px 12px;
+
+    }
+
+
+    .hero h1 {
+
+        font-size: 2.15rem;
+
+    }
+
+
+    .business-content,
+    .business-section-reverse
+    .business-content {
+
+        padding-left: 18px;
+        padding-right: 18px;
+
+    }
+
+}
+
+
+/* =========================
+   17. REDUZIR ANIMAÇÕES
+   ========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: .01ms !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
